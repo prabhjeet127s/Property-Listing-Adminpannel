@@ -19,13 +19,14 @@ function App() {
 
   const { pathname } = useLocation()
   const isAuthRoute = pathname.startsWith("/auth")
+  
    useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token && location.pathname !== "/auth/signin") {
       navigate("/auth/signin");
     }
     console.log("sdfsdb");
-  }, [navigate, location.pathname]);
+  }, [navigate, location.pathname])
 
   return (
     isAuthRoute ? (
