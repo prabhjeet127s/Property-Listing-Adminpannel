@@ -2,6 +2,7 @@
 import { getallproperty } from '../../apiservice/Property/Property'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
+import { Loader } from 'lucide-react';
 
 import Pagination from '../../components/Pagination'
 
@@ -42,9 +43,7 @@ const Property = () => {
         },
         enabled: true
     });
-  if (isLoading) {
-        return <p className="p-6 text-gray-600">Loading users...</p>;
-    }
+  
 
 
 
@@ -56,11 +55,9 @@ const Property = () => {
 
 
     return (
-        <div className="  bg-yellow-50 p-10    w-375 ml-52  ">
+        <div className="  bg-gray-50  w-375 ml-52  ">
 
-            <div className="text-sm text-gray-500 mb-4">
-                Home &gt; <span className="text-gray-700 font-medium">Property</span>
-            </div>
+        
 
 
             <div className="bg-white rounded-xl shadow-md p-6">
@@ -85,14 +82,14 @@ const Property = () => {
                     <div className="   flex items-center gap-3">
 
                         <button onClick={() => setIsAdmin(true)}
-                            className={` ${isAdmin == true && " bg-yellow-500 text-black "}  p-4  rounded-lg text-lg font-medium transition`} >
+                            className={` ${isAdmin == true && " bg-yellow-500 text-black "}   hover:bg-yellow-600   p-4  rounded-xl text-lg font-medium transition`} >
                             Admin Property
                         </button>
 
 
 
                         <button onClick={() => setIsAdmin(false)}
-                            className={` ${isAdmin == false && " bg-yellow-500 text-black "}  hover:bg-yellow-600  p-4  rounded-lg text-lg font-medium transition `} >
+                            className={` ${isAdmin == false && " bg-yellow-500 text-black "}  hover:bg-yellow-600  p-4  rounded-xl text-lg font-medium transition `} >
                             MLS Property
                         </button>
                     </div>
@@ -101,6 +98,8 @@ const Property = () => {
                 {isAdmin ? <div className='text-center  ' >
                     <h3 className='text-xl font-semibold'>No Data Found</h3>
                 </div> : <div className="overflow-x-auto  h-1/2 ">
+    
+                
                     <table className="w-full  text-left border-none ">
                         <thead className="text-gray-500 border-none p-3 m-3 text-sm uppercase border-b">
                             <tr>
@@ -114,6 +113,9 @@ const Property = () => {
                                 <th className="py-4">Business Type</th>
                             </tr>
                         </thead>
+                                        {isLoading && <p className="p-6 animate-pulse  text-gray-600">
+                                                  <Loader className='size-12'  /></p>}
+
 
                         <tbody className="text-gray-700 border-none ">
                             {

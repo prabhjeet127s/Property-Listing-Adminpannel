@@ -6,6 +6,8 @@ import {
   getAllUsersList,
   changeuserstatus,
 } from "../../apiservice/User/Userlist";
+import { Loader } from 'lucide-react';
+
 
 interface User {
   userId: string;
@@ -18,10 +20,10 @@ interface User {
 
 
 const Userlist = () => {
-  const limits=10;
+  const limits = 10;
   const [offset, setOffset] = useState<number>(0);
 
-  
+
   const [openRowId, setOpenRowId] = useState<string | null>(null);
 
   const { data: alluserlist, isLoading, refetch } = useQuery({
@@ -35,8 +37,8 @@ const Userlist = () => {
   const users = alluserlist?.data?.data?.users || [];
   const totalcount = alluserlist?.data?.data?.totalCount || 0;
 
-  
-  const handleStatusChange = async (user:User) => {
+
+  const handleStatusChange = async (user: User) => {
     const newStatus =
       user.status === "active" ? "inactive" : "active";
 
@@ -57,15 +59,14 @@ const Userlist = () => {
     }
   };
 
-  if (isLoading) {
-    return <p className="p-6 text-gray-600">Loading users...</p>;
-  }
+
 
   return (
     <div className=" bg-gray-50   w-375 ml-52   pt-10 min-h-screen">
       <h2 className="text-xl font-semibold mb-4">Users</h2>
 
       <div className="overflow-x-auto bg-white rounded-lg shadow">
+
         <table className="min-w-full  border-none border-collapse">
           <thead className="bg-gray-100  border-none ">
             <tr>
@@ -89,11 +90,12 @@ const Userlist = () => {
               </th>
             </tr>
           </thead>
-
-          <tbody  className="border-none" >
-            {users.map((user:User, index: number) => (
+          {isLoading && <p className="p-6 animate-pulse text-gray-600">
+            <Loader   className='size-12'  /></p>}
+          <tbody className="border-none" >
+            {users.map((user: User, index: number) => (
               <tr
-                key={user.userId} 
+                key={user.userId}
                 className="border-none hover:bg-gray-50"
               >
                 <td className="px-4 py-6 text-lg text-gray-700">
@@ -115,17 +117,16 @@ const Userlist = () => {
 
                 <td className="px-4 py-6">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      user.status === "active"
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${user.status === "active"
                         ? "bg-green-100 text-green-700"
                         : "bg-red-100 text-red-700"
-                    }`}
+                      }`}
                   >
                     {user.status}
                   </span>
                 </td>
 
-              
+
                 <td className="px-4 py-6 text-center relative">
                   <button
                     className="text-xl"
@@ -160,14 +161,14 @@ const Userlist = () => {
           </tbody>
         </table>
       </div>
-<div  className="pb-10" >
+      <div className="pb-10" >
         <Pagination
-            totalCount={totalcount}
-            limit={limits}
-            offset={offset}
-            setOffset={setOffset}
-            />
-            </div>
+          totalCount={totalcount}
+          limit={limits}
+          offset={offset}
+          setOffset={setOffset}
+        />
+      </div>
     </div>
   );
 };

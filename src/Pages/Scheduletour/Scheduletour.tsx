@@ -1,17 +1,29 @@
-import React from 'react'
+
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { CiCalendarDate } from "react-icons/ci";
 import { CiTimer } from "react-icons/ci";
 import Pagination from '../../components/Pagination';
 import { getallscheduletour } from '../../apiservice/Scheduletour/Scheduletour'
+import { Loader } from 'lucide-react';
+
+
+interface TourUser {
+    ListingKey: string;
+    userName: string;
+    email: string;
+    status: string;
+    creationDate: string;
+    bookingDateAndTime: string;
+}
+
 
 const Scheduletour = () => {
-    const [limits, setLimit] = useState(10);
+    const limits = 10;
     const [offset, setOffset] = useState<number>(0);
 
-    
-    const { data,isLoading } = useQuery({
+
+    const { data, isLoading } = useQuery({
         queryKey: ["getallscheduletour", offset, limits],
         queryFn: async () => {
             const query = [
@@ -21,18 +33,16 @@ const Scheduletour = () => {
             return await getallscheduletour(query)
         }
     })
-  if (isLoading) {
-    return <p className="p-6 text-gray-600">Loading users...</p>;
-  }
 
     const tours = data?.data?.data?.bookings;
-    const totalcount=data?.data?.data?.totalCount;
+    const totalcount = data?.data?.data?.totalCount;
 
     console.log(data)
 
     console.log(tours)
     return (
-        <div className=' bg-gray-50 p-10  w-[1500px] ml-52   pt-10' >
+        <div className=' bg-gray-50 p-10  min-h-screen  w-375 ml-52   pt-10' >
+
 
             <table className=" p-4  w-full border-none  text-left">
                 <thead className="text-gray-500 border-none p-3 m-3 text-sm uppercase border-b">
@@ -46,15 +56,17 @@ const Scheduletour = () => {
                         <th className="py-4">ACTION</th>
                     </tr>
                 </thead>
+                {isLoading && <p className="p-6 animate-pulse text-gray-600">
+                    <Loader    className='size-12'  /></p>}
 
-                <tbody className="  border-none text-gray-700">
+                <tbody className="   border-none text-gray-700">
                     {
-                        tours?.map((item, index: number) => (
+                        tours?.map((item: TourUser, index: number) => (
                             <tr
                                 key={item.ListingKey}
                                 className=" border-none hover:bg-gray-50 transition"
                             >
-                                <td className="py-6 text-lg">{offset+index + 1}.</td>
+                                <td className="py-6 text-lg">{offset + index + 1}.</td>
 
                                 <td className="py-6 text-lg font-medium">
                                     {item.userName}
@@ -87,10 +99,10 @@ const Scheduletour = () => {
                 </tbody>
             </table>
             <Pagination
-            totalCount={totalcount}
-            limit={limits}
-            offset={offset}
-            setOffset={setOffset}
+                totalCount={totalcount}
+                limit={limits}
+                offset={offset}
+                setOffset={setOffset}
             />
 
 

@@ -7,6 +7,8 @@ interface PaginationProps {
   totalCount: number;
   limit: number;
   offset: number;
+  setOffset:React.Dispatch<React.SetStateAction<number>>
+
 
 }
 
@@ -27,8 +29,7 @@ const Pagination= ({ totalCount,limit,offset,setOffset}:PaginationProps) => {
     
     }
   };
-console.log(totalCount +" ttoal")
-console.log(currentPage+" current")
+
 
   return (
     <div className="flex justify-end items-center gap-3 mt-6">
