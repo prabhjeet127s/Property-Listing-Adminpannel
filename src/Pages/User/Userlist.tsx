@@ -62,7 +62,7 @@ const Userlist = () => {
   }
 
   return (
-    <div className=" bg-gray-50   w-[1500px] ml-52   pt-10 min-h-screen">
+    <div className=" bg-gray-50   w-375 ml-52   pt-10 min-h-screen">
       <h2 className="text-xl font-semibold mb-4">Users</h2>
 
       <div className="overflow-x-auto bg-white rounded-lg shadow">
