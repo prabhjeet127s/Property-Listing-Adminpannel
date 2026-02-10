@@ -44,10 +44,10 @@ const Signin = () => {
 
             </div>
 
-            <div className=' bg-gray-100 h-[93%] rounded-4xl p-12 my-7 w-1/2 ' >  {/*right box*/}
+            <div className=' bg-gray-100 h-[93%] rounded-4xl  my-7 w-1/2 ' >  {/*right box*/}
 
                 <div>
-                    <div className='flex flex-col  font-semibold mt-30  ' >
+                    <div className='flex flex-col  font-semibold mt-10 p-14  ' >
                         <h3 className='text-4xl p-2 text-center ' >Admin-Panel</h3>
                         <h3 className='text-4xl p-2 text-center ' >Login</h3>
                         <div>

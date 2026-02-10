@@ -1,5 +1,5 @@
 import { getdashboarData } from '../../apiservice/Dashboard/Index'
-import React from 'react'
+
 import CardDataStats from '../../components/CardDataStats'
 
 
@@ -79,7 +79,7 @@ const DashboardChart = ({ totaltour, totaluser }: DashboardData) => {
 
   return (
 
-    <div className='h-[400px]'    >
+    <div className='h-100'    >
       <Doughnut className=''
         data={data} options={options} />
     </div>
@@ -134,7 +134,7 @@ const BookingBarChart = ({ alldata }: B) => {
   return (
 
 
-    <div className='h-[100%]'    >
+    <div className='h-full'    >
 
       <Bar className='' data={chartData} options={options} />
     </div>
@@ -216,14 +216,14 @@ const Dashboard = () => {
       <div className='flex  my-10 gap-9 w-auto h-auto  mr-12 md:grid-cols-3 ' >
 
 
-        <div className="w-[600px] h-[700px]  p-5  md:h-[400px]">
+        <div className="w-150 h-175  p-5  md:h-100">
           <DashboardChart totaluser={totaluser} totaltour={totalScheduledTours} />
         </div>
 
 
 
 
-        <div className=" w-[600px] h-[700px] p-5 md:h-[400px]">
+        <div className=" w-150 h-175 p-5 md:h-100">
           <BookingBarChart alldata={bookingData} />
         </div>
 
