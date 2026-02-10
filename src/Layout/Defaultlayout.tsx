@@ -12,14 +12,13 @@ const Defaultlayout:React.FC<{ children: ReactNode }> = ({children}) => {
     const navigate=useNavigate()
 
 
-      useEffect(() => {
-        
+     useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token && location.pathname !== "/auth/signin") {
       navigate("/auth/signin");
     }
-  
-  }, []);
+    console.log("sdfsdb");
+  }, [navigate, location.pathname]);
   
 
 

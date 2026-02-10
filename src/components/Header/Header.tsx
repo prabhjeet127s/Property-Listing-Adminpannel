@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { FaChevronDown } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 interface SidebarProps {
     sidebarOpen: boolean;
     setSidebarOpen: (arg: boolean) => void;
@@ -10,6 +11,17 @@ interface SidebarProps {
 
 
 const Header = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
+    const navigate=useNavigate();
+
+    const handlelogoutclick=()=>{
+        localStorage.removeItem("token")
+        sessionStorage.removeItem('token')
+    
+
+        navigate("/auth/signin")
+
+    }
+    
 
     const [logout, setlogout] = useState(false);
     return (
@@ -44,8 +56,8 @@ const Header = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
                     </span>
 
-                    {logout && <div className=' border-2 bg-gray-50 position absolute  p-6 rounded-4xl shadow-2xl shadow-black text-3xl top-20 ' >
-                        Logout
+                    {logout && <div className=' border-2 bg-gray-50 position absolute  hover:bg-gray-100   p-3 rounded-2xl shadow-lg shadow-black text-xl left-15 top-20 ' >
+                       <button  onClick={handlelogoutclick} >Logout</button> 
 
                     </div>}
 

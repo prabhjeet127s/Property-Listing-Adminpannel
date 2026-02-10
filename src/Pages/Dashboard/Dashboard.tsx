@@ -198,16 +198,16 @@ const Dashboard = () => {
 
         <CardDataStats
           title="Properties"
-          total={19971}
+          total={20440}
           icon="/images copy/dashproperty.png"
           url="property"
         />
 
         <CardDataStats
           title="Schedule Tour"
-          total={56}
+          total={totalScheduledTours}
           icon="/images copy/appointment.png"
-          url="tour"
+          url="scheduletours"
 
         />
       </div>

@@ -31,12 +31,13 @@ axiosInstance.interceptors.response.use(
     },
 
     (error) => {
-        alert("error")
+        
         if (error.response && error.response.status === 400) {
             sessionStorage.removeItem("token")
             localStorage.removeItem("token")
 
-            window.location.href = '/auth/signin'
+            window.location.href = '/auth/signin';
+            
 
 
         }

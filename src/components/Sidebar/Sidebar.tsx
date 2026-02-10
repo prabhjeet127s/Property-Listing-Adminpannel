@@ -26,7 +26,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }:SidebarProps) => {
     },
     {
       title: "Scheduled Tour",
-      route: "/tour",
+      route: "/scheduletours",
       image: "/images copy/calendar-tick.svg",
     },
   ];
@@ -50,7 +50,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }:SidebarProps) => {
           <NavLink
             to={item.route}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 text-2xl font-semibold
+              `flex items-center gap-3 px-4 py-3 text-xl font-semibold
               ${isActive ? "bg-yellow-600 text-black" : "text-gray-600"}
               hover:bg-yellow-600`
             }
