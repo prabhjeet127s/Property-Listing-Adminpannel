@@ -110,7 +110,7 @@ const Property = () => {
                                 <th className="py-4">Documents Available</th>
                                 <th className="py-4">Lease Amount</th>
                                 <th className="py-4">Lease Amount Frequency</th>
-                                <th className="py-4">Business Type</th>
+                                <th className="py-4">Business Type</th>       
                             </tr>
                         </thead>
                                         {isLoading && <p className="p-6 animate-pulse  text-gray-600">
