@@ -28,8 +28,6 @@ const CardDataStats = ({ title, total, icon ,url}:prop) => {
       
     </div>
       </Link>
-
-
     </div>
     
   );

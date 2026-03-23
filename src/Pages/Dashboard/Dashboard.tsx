@@ -176,8 +176,6 @@ const Dashboard = () => {
   
     })*/
 
-
-
   const totaluser = dashboard?.data?.data?.totalUsers;
   const totalScheduledTours = dashboard?.data?.data?.totalScheduledTours;
 
